@@ -1,6 +1,6 @@
 (defn parse-matrix-from-file [filename]
   (let [split clojure.string/split
-        str-values (->> (split (slurp "data/p11.txt") #"\n")
+        str-values (->> (split (slurp filename) #"\n")
                         (map #(split % #"\s+")))]
     (loop [remaining str-values
            result []]
@@ -47,7 +47,7 @@
   (multiply-diag-left-to-right-groups-of-n (map reverse rows) n))
 
 (defn solve-problem-11 []
-  (let [mtrx (parse-matrix-from-file "doc/p11.txt")
+  (let [mtrx (parse-matrix-from-file "data/p11.txt")
         row-totals (multiply-rows-in-groups-of-n mtrx 4)
         col-totals (multiply-columns-in-groups-of-n mtrx 4)
         diag-ltr-totals (multiply-diag-left-to-right-groups-of-n mtrx 4)
