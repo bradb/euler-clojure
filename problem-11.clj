@@ -6,8 +6,7 @@
            result []]
       (if (empty? remaining)
         result
-        (recur (rest remaining) (conj result (map #(Integer/parseInt %) (first remaining)))))
-      )))
+        (recur (rest remaining) (conj result (map #(Integer/parseInt %) (first remaining))))))))
 
 (defn multiply-groups-of-n [values n]
   (loop [first-n (take n values)
@@ -42,8 +41,7 @@
         (recur (take n remaining)
                (rest remaining)
                (conj result (multiply-columns-in-groups-of-n valigned-diag-groups n))))
-      result)
-    ))
+      result)))
 
 (defn multiply-diag-right-to-left-groups-of-n [rows n]
   (multiply-diag-left-to-right-groups-of-n (map reverse rows) n))
